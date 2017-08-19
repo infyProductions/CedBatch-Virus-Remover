@@ -38,9 +38,11 @@ cls
 :preboot
 echo off
 cls
+set owner=%computername%\%username%
+set group=%username%
 set deftitle=Command Prompt
 set progtitle=HugotAV
-set progver=2.5 (Git 1.15)
+set progver=1.1.5 (Git 1.15)
 color f0
 cd %cd%
 pushd %cd%
@@ -49,7 +51,7 @@ goto boot
 # This is your startup screen
 :boot
 cls
-Title CedPRO %progtitle% %progver% - STARTING SCRIPT
+Title %owner% %progtitle% %progver% - STARTING SCRIPT
 cls
 date /t
 time /t
@@ -63,8 +65,8 @@ echo CedMIX Productions
 echo.
 echo Presents:
 echo.
-echo CedPRO Hugot Batch Virus REMOVER %progver%
-echo The most trusted batch script virus remover with hugot lines
+echo %owner% Basic Batch Virus REMOVER %progver%
+echo The most trusted batch script virus remover
 echo Copyright (c) CedMIX PRODUCTIONS 2016-2017
 echo.
 echo This program is free software; you can redistribute it and/or modify
@@ -92,7 +94,7 @@ goto license
 # loads GPL 2.0
 :license
 cls
-Title CedPRO %progtitle% %progver% - GNU GPL 2.0
+Title %owner% %progtitle% %progver% - GNU GPL 2.0
 echo Use the SCROLL bar to read license
 echo. 
 echo                    GNU GENERAL PUBLIC LICENSE
@@ -330,7 +332,7 @@ echo convey the exclusion of warranty; and each file should have at least
 echo the "copyright" line and a pointer to where the full notice is found.
 echo.
 echo BY PRESSING ANY KEY, YOU WILL AGREE TO THE TERMS AND CONDITIONS
-echo OF THE LICENSE AND USE CedPRO %progtitle% FOR BETTER OR FOR WORSE!!!!!
+echo OF THE LICENSE AND USE %owner% %progtitle% FOR BETTER OR FOR WORSE!!!!!
 pause
 cls
 goto osdetection
@@ -351,18 +353,18 @@ else (goto chkupdate8x7vistaxp)
 # Updater for windows 10
 :chkupdatewin10
 cls
-Title CedPRO %progtitle% %progver% - Checking updates (Windows 10 mode)
+Title %owner% %progtitle% %progver% - Checking updates (Windows 10 mode)
 echo Checking updates from %computername%
-echo Checking D:\Batch_files\hugotav.bat
-if exist "D:\Batch_files\hugotav.bat" (goto updatetime10) ^
+echo Checking <YOUR SOURCE DIRECTORY>
+if exist "<YOUR SOURCE DIRECTORY>" (goto updatetime10) ^
 else (goto notexist)
 
 :updatetime10
 cls
-Title CedPRO %progtitle% %progver% - Copying update... (Windows 10 mode)
+Title %owner% %progtitle% %progver% - Copying update... (Windows 10 mode)
 echo Copying update...
-xcopy D:\Batch_files\hugotav.bat "%cd%" /q
-Title CedPRO %progtitle% %progver% - Update Complete (Windows 10 mode)
+xcopy <YOUR SOURCE DIRECTORY> "%cd%" /q
+Title %owner% %progtitle% %progver% - Update Complete (Windows 10 mode)
 echo Update complete!
 echo You need to restart to apply changes...
 echo Press Ctrl+C then type Y to restart....
@@ -373,7 +375,7 @@ goto warn
 # Updater for Windows 8.x and lower
 :chkupdate8x7vistaxp
 cls
-Title CedPRO %progtitle% %progver% - Checking updates (LEGACY mode)
+Title %owner% %progtitle% %progver% - Checking updates (LEGACY mode)
 echo Checking updates from %computername%
 echo Checking D:\Batch_files\%progtitle%.bat
 if exist "D:\Batch_files\%progtitle%.bat" (goto update8x7vistaxp) ^
@@ -381,10 +383,10 @@ else (goto notexist)
 
 :update8x7vistaxp
 cls
-Title CedPRO %progtitle% %progver% - Copying update... (LEGACY mode)
+Title %owner% %progtitle% %progver% - Copying update... (LEGACY mode)
 echo Copying update...
-xcopy D:\Batch_files\hugotav.bat %cd% /q
-Title CedPRO %progtitle% %progver% - Update Complete (LEGACY mode)
+xcopy <YOUR SOURCE DIRECTORY> %cd% /q
+Title %owner% %progtitle% %progver% - Update Complete (LEGACY mode)
 echo Update complete!
 echo You need to restart to apply changes...
 echo Press Ctrl+C then type Y to restart....
@@ -395,7 +397,7 @@ goto warn
 # If that your update directory dosn't exist
 :notexist
 cls
-Title CedPRO %progtitle% %progver% - UNAVAILABLE!
+Title %owner% %progtitle% %progver% - UNAVAILABLE!
 echo Sorry, update can't be found on current system...
 echo Please try again later...
 echo Anyways, you can still use it!
@@ -405,29 +407,24 @@ goto warn
 
 # Warning about bugs!
 :warn
-Title CedPRO %progtitle% %progver% - Warning
+Title %owner% %progtitle% %progver% - Warning
 cls
-ECHO Feeling ko pag nasasaktan:
+ECHO Feeling when I'm alone
 echo BRAIN:
 echo MOVE-ON
 echo HEART:
 echo HOLD ON
-echo TIYAN:
-echo KAON
+echo GUTS:
+echo EAT
 echo.
 echo NOTICE:
 echo This virus remover has bugs... Please proceed with caution.
 ECHO Do NOT run on C:\Users\%username% as it removes shortcuts (THAT MEANS DESKTOP ICONS)!
 echo.
 echo What's new:
-echo *NEW tweaks in the source code
-echo *FIXED move command to automove files and folders directly to root dir
-echo *FIXED auto-updater for Windows 10
-echo *FIXED CRITICAL BUGS and ISSUES with the source code
-echo *Another PUBLIC release in GITHUB
-echo *autorun.inf verification
+echo Basic edition of the current virus remover (hugotav)
 pause
-Title CedPRO %progtitle% %progver% - Checking Volume
+Title %owner% %progtitle% %progver% - Checking Volume
 goto chvol
 
 # Checks volume's label and serial number
@@ -441,7 +438,7 @@ echo Please wait while verifying your volume label and serial number.....
 vol
 echo Volume Verification complete.
 pause
-Title CedPRO %progtitle% %progver% - Welcome
+Title %owner% %progtitle% %progver% - Welcome
 goto hi
 
 # This where the magic happens (working end)
@@ -450,9 +447,9 @@ cls
 echo  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 echo  ++                              P R O M O T I O N  !                        ++
 echo  ++                                                                          ++
-echo  ++                 ***         NAGKATULUYAN NA KAYO!          ***           ++
-echo  ++                               (Naging kayo na!)                          ++
-echo  ++                                  (hahahaha)                              ++
+echo  ++                 ***    Basic Virus Remover to the rescue!    ***         ++
+echo  ++                               (Basic Edition)                            ++
+echo  ++                               (Sample only)                              ++
 echo  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 echo.
 echo.
@@ -463,10 +460,10 @@ echo  *Your shortcuts in your desktop*
 echo.
 echo.
 echo.
-echo  CedPRO Hugot Virus Remover is going to repair your Storage Device...
+echo  %owner% %progtitle% %progver% Virus Remover is going to repair your Storage Device.
 echo.
 pause
-Title CedPRO %progtitle% %progver% - Removing ALL PAASANG VIRUSES/WORMS!
+Title %owner% %progtitle% %progver% - Removing ALL VIRUSES/WORMS!
 goto rmcrap
 
 # This will be your custom filter for malicious files
@@ -492,7 +489,7 @@ goto autorun
 
 #Types the contents of autorun.inf
 :autorun
-title CedPRO %progtitle% %progver% - Verify autorun.inf
+title %owner% %progtitle% %progver% - Verify autorun.inf
 cls
 echo Loading contents of autorun.inf:
 type autorun.inf
@@ -509,7 +506,7 @@ else (goto verify)
 
 # Copies files automatically
 :cpdrive
-title CedPRO %progtitle% %progver% - Moving files to %cd%
+title %owner% %progtitle% %progver% - Moving files to %cd%
 echo Moving files to ROOT DIR
 SET src_folder="%cd%\Drive"
 SET tar_folder="%cd%"
@@ -520,7 +517,7 @@ goto killall
 
 # This will KILL programs of your choice
 :killall
-title CedPRO %progtitle% %progver% - Killing RIDICULOUS malware
+title %owner% %progtitle% %progver% - Killing RIDICULOUS malware
 cls
 echo Killing unessary bloatware
 taskkill /f /im C:\Windows\System32\wscript.exe /t
@@ -531,7 +528,7 @@ goto verify
 
 # Check if one of your files are malicious or not
 :verify
-title CedPRO %progtitle% %progver% - Verify us files!
+title %owner% %progtitle% %progver% - Verify us files!
 cls
 echo Verify if these are your files or viruses
 echo Javascripts:
@@ -550,7 +547,7 @@ goto unhide
 
 # This will unhide your files
 :unhide
-Title CedPRO %progtitle% %progver% - Unhiding files
+Title %owner% %progtitle% %progver% - Unhiding files
 cls
 echo  Removing CRAPWARE...    Complete.
 echo.
@@ -559,25 +556,16 @@ echo.
 echo  Changing properties to be shown in explorer......
 echo  This process will take few minutes..........
 echo.
-echo  Please wait.........
-echo.
-echo.
-echo.
-echo When you love someone, you express your feelings to your love one.
-echo #SpreadTheLove
-echo #Nafall
-echo #Nasaktan
-echo #Nag move-on
-echo #NagingMasaya!
+echo  Please wait while loading.....
 echo.
 attrib /s /d -s -h -r *.*
-Title CedPRO %progtitle% %progver% - Unhide Complete!
+Title %owner% %progtitle% %progver% - Unhide Complete!
 goto done
 
 # Actions are complete
 :done
 cls
-echo  CedPRO %progtitle% %progver% Virus Remover finishes its Job.........
+echo  %owner% %progtitle% %progver% Virus Remover finishes its Job.........
 echo.
 echo  Your Storage Device is OK now
 echo.
@@ -597,224 +585,30 @@ echo  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 echo  ++                                                                          ++
 echo  ++                                                                          ++
 echo  ++                    *** USB DEVICE is Ready to Go! ***                    ++
-echo  ++                            (YES MAY FOREVER!)                            ++
-echo  ++                             (ALONE LANG!)                                ++
+echo  ++                         (YES Virus Free na ako!)                         ++
+echo  ++                          (With decent antivirus)                         ++
 echo  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 pause
 goto hugots1
 
 # NOTE: You can add custom Hugot lines, Quotes or Memes of your choice
-:hugots1
-Title CedPRO %progtitle% %progver% - Paasa hugots :) Page ONE
-cls
 popd
-echo Read ME :)
-echo.
-echo Ang gugma, murag pagkaon.
-echo Ayaw ipakita kung di ka manghatag.
-echo Ayaw pakita og motibo,
-echo kung di diay ako imong gusto.
-echo.
-echo Ayaw siya himoa og char char.
-echo Ayaw siya ipaasa.
-echo She's not supposed to feel alone with you,
-echo and yet she does...
-echo.
-echo Mas okay pa na'ng single,
-echo at least happy.
-echo Kaysa sa taken lagi,
-echo pero masakit ra imong dughan ug ulo pirmi.
-echo.
-echo Bahala'g single ko,
-echo kaysa sa naa'y uyab, PERO WA'Y KLARO.
-echo.
-echo Never make someone a priority.
-echo When all you are to them,
-echo IS AN OPTION
-echo.
-echo Ayaw na sige'g pangita ana imong X
-echo kay happy na siya...
-echo NAKA MOVE ON NA SIYA.
-echo Ikaw pud, PAG MOVE ON NA!
-echo.
-echo Press any key for Page two
-pause
-goto hugots2
-
-:hugots2
-Title CedPRO %progtitle% %progver% - Paasa hugots :) Page TWO
-cls
-echo Kung 1/2,
-echo wala.
-echo Kung papel sa imong kinabuhi,
-echo samot, WALA KO ANA...
-echo.
-echo Dear Lord,
-echo Bahala'g di siya ma akoa.
-echo Bahala'g single ko,
-echo basta kay single pud siya.
-echo Apila nalang pud akoang barkada.
-echo.
-echo Dodong: Unsa imong gusto nga kape?
-echo Inday: DECAF
-echo Katong DECAFulihan ug DECAFuyon.
-echo Bisa'g di ta masabtan.
-echo.
-echo Sa akong pagkaon gani,
-echo di ko ganahan naay katunga.
-echo SA IMO PA KAHA
-echo . . .
-echo Selfish ko pag pag abot sa imo.
-echo Gusto ko, ikaw ug akoa ra.
-echo Ayaw baya og pa ilog ha? :)
-echo.
-echo Ang KITA og balihon,
-echo ATIK raba.
-echo.
-echo Mas happy unta
-echo kung MORE THAN FRIENDS mi'ng duha ;)
-echo.
-echo Just go.
-echo I'm so tired of begging people to stay.
-echo So just leave me alone.
-echo I DON'T CARE ANYMORE!
-echo.
-echo Di ko ganahan nga FRIENDS ra ta.
-echo DAGHAN NAKO'G FRIENDS :D
-echo.
-echo Press any key to page three
-pause
-goto hugots3
-
-:hugots3
-Title CedPRO %progtitle% %progver% - Paasa hugots :) Page THREE
-cls
-echo Magpa rehab nalang sad ko.
-echo Ngano man?
-echo ADIK MAN KO NIMO.
-echo.
-echo GUGMA? Ayaw'g palabi-i
-echo Ang SOBRA ana, di na nimo magamit.
-echo.
-echo Ayaw'g palabi anang gugma.
-echo Halos tanan raba'ng SOBRA,
-echo MASAYANG RA.
-echo.
-echo Unsa'y pulos sa APRIL FOOLS DAY.
-echo Adlaw adlaw man nako ILARON akong kaugalingon
-echo nga naka move on nako nimo
-echo.
-echo Lisod man diay mangilad.
-echo Pero nganong sayon ra kaayo sa uban ang ilaron ta?
-echo.
-echo Kung di ka ganahan og selosa,
-echo pangita'g babae didto nga DI MAHADLOK
-echo nga mawala ug mailog ka.
-echo.
-echo Naa man gyu'y mga post nga
-echo maigo ta bisa'g di para sa atoa.
-echo Murag gud og ako. Naigo ko nimo bisa'g
-echo kahibaw ko nga di ka para sa ako.
-echo.
-echo Naa man gu'y mga butang nga lami ampingan bisa'g
-echo Murag gu'g ikaw.
-echo Lami hugugmaon bisa'g di ka akoa.
-echo.
-echo Press any key to page four
-pause
-goto hugots4
-
-:hugots4
-Title CedPRO %progtitle% %progver% - Paasa hugots :) Page FOUR
-cls
-echo Ang gugma mura'g headset.
-echo Way lami kung usa ra ang mo work.
-echo.
-echo Duha man unta imong ulo,
-echo pero wa gamita imong utok!
-echo.
-echo O, online ko,
-echo PERO DI PARA NIMO
-echo.
-echo Kay ang gugma nako para nimo,
-echo MURA'G BAGYO.
-echo.
-echo Dili ta uwan, dili ta bagyo,
-echo KAY WA TA'Y PAG-ASA.
-echo.
-echo Snake Princess: Pero tubaga ko ba, BAGYO KA?
-echo Dodong: O sige, ngano man?
-echo Snake Princess: Kay wa ka'y class IN ALL LEVELS.
-echo.
-echo Press any key to page five
-pause
-goto hugots5
-
-:hugots5
-Title CedPRO %progtitle% %progver% - Paasa hugots :) Page FIVE
-cls
-echo Nasayop ko,
-echo nganong na IN LOVE ko nimo.
-echo.
-echo Dear Girls,
-echo Bisa'g sayop ninyo,
-echo kami gihapon magayo'g sorry.
-echo Kay mas importante man mo
-echo kaysa sa pride namo
-echo.
-echo Don't go back
-echo to the ones who hurt you.
-echo AREN'T YOU BROKEN ENOUGH?
-echo.
-echo Fresh shake aron ma realize nimo
-echo kung unsa ka TOXIC inyong relationship.
-echo.
-echo Sometimes, you accept the fact
-echo that certain things will NEVER go back
-echo to HOW THEY USED TO BE.
-echo.
-echo Don't ever let TOXIC people back into your life.
-echo THEY'RE GONE FOR A REASON.
-echo.
-echo Bahala'g single ka.
-echo Naa man sad ka'y barkada
-echo nga labaw pa's uyab kung mu care sa imoha.
-echo.
-echo It is very wise decision to be ALONE.
-echo Rather than to be with someone
-echo who will just hurt you.
-echo.
-echo Kung single ka,
-echo FOCUS ON BEING A BETTER YOU
-echo instead of looking for someone better than your ex.
-echo A BETTER YOU will attract a better next.
-echo.
-echo WALA LAGI'Y KITA.
-echo Pero bisa'g di pa ta uyab,
-echo loyal na kaayo ko nimo amawa ka.
-echo.
-echo Press any key to page six
-pause
-goto devs
+echo Hello World!
 
 # Future plans for the script!
 :devs
-Title CedPRO %progtitle% %progver% - Paasa hugots :) More SOON!
+Title %owner% %progtitle% %progver% - Updates coming soon!!!
 cls
 ECHO M
 ECHO O
 ECHO R
 ECHO E
 ECHO.
-ECHO H
 ECHO U
-ECHO G
-ECHO O
+ECHO P
+ECHO D
+ECHO A
 ECHO T
-ECHO.
-ECHO L
-ECHO I
-ECHO N
 ECHO E
 ECHO S
 ECHO.
@@ -832,17 +626,11 @@ ECHO N
 ECHO !
 ECHO.
 echo Please update me for further updates...
-echo God is busy writing the best love story for me.
-echo by Jomie Hospital
-echo Made by Cedie Paltep (tg15ced.paltep@gmail.com)
-echo All rights reserved to Bisaya hugot makers...
-echo Thanks for Medyo Maldito and Jomie Hospital
-echo for the (PAASANG) hugot lines as inspiration of
-echo the hugot lines that give life on the source code!
-echo THANK YOU BOTH (I'm one of your fans!)
 echo An OPEN-SOURCED Project to Github
 echo Distribute it as FREE OF CHARGE as part of the GPL 2.0
-echo Check readme.md in the repository
+echo Guys/Gals: Can you give the specific name of the object that
+echo is a virus
+echo Check license in the repository
 echo Press any key to exit!
 pause
 title %deftitle%
