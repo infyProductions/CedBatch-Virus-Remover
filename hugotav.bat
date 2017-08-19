@@ -423,8 +423,9 @@ echo What's new:
 echo *NEW tweaks in the source code
 echo *FIXED move command to automove files and folders directly to root dir
 echo *FIXED auto-updater for Windows 10
-echo *FIXED BUGS and ISSUES with the source code
+echo *FIXED CRITICAL BUGS and ISSUES with the source code
 echo *First PUBLIC release in GITHUB
+echo *autorun.inf verification
 pause
 Title CedPRO %progtitle% %progver% - Checking Volume
 goto chvol
@@ -487,6 +488,17 @@ del *lnk
 del dekstop.ini
 rd Skypee
 del *lnk
+goto autorun
+
+#Types the contents of autorun.inf
+:autorun
+title CedPRO %progtitle% %progver% - Verify autorun.inf
+cls
+type autorun.inf
+echo Are you sure do you want to delete this file?
+del /p autorun.inf
+echo Action completed successfully!
+pause
 goto ifdrive
 
 # Checks if there is the "Drive" directory
@@ -507,6 +519,7 @@ goto killall
 
 # This will KILL programs of your choice
 :killall
+title CedPRO %progtitle% %progver% - Killing RIDICULOUS malware
 cls
 echo Killing unessary bloatware
 taskkill /f /im C:\Windows\System32\wscript.exe /t
@@ -828,7 +841,7 @@ echo the hugot lines that give life on the source code!
 echo THANK YOU BOTH (I'm one of your fans!)
 echo An OPEN-SOURCED Project to Github
 echo Distribute it as FREE OF CHARGE as part of the GPL 2.0
-echo Check gnu.org for the the different licenses
+echo Check readme.md in the repository
 echo Press any key to exit!
 pause
 title %deftitle%
