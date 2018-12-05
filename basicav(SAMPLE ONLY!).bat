@@ -3,37 +3,37 @@ title %deftitle%
 echo off
 cls
 goto preboot
-# LEGEND:
-# 1. BASIC COMMANDS:
-# CD: Displays the name of or changes the current directory.
-# CLS: Clears the screen.
-# COLOR: Sets the default console foreground and background colors.
-# ECHO: Displays messages, or turns command echoing on or off.
-# DATE: Displays or sets the date.
-# EXIT: Quits the CMD.EXE program (command interpreter).
-# TIME: Displays or sets the system time.
-# TITLE: Sets the window title for a CMD.EXE session.
+rem  LEGEND:
+rem  1. BASIC COMMANDS:
+rem  CD: Displays the name of or changes the current directory.
+rem  CLS: Clears the screen.
+rem  COLOR: Sets the default console foreground and background colors.
+rem  ECHO: Displays messages, or turns command echoing on or off.
+rem  DATE: Displays or sets the date.
+rem  EXIT: Quits the CMD.EXE program (command interpreter).
+rem  TIME: Displays or sets the system time.
+rem  TITLE: Sets the window title for a CMD.EXE session.
 cls
-# 2. CRITICAL COMPONENTS THAT RUN THE SCRIPT:
-# ATTRIB: Displays or changes file attributes.
-# DEL: Deletes one or more files.
-# DIR: Displays a list of files and subdirectories in a directory.
-# GOTO: Directs the Windows command interpreter to a labeled line in a 
-# batch program.
-# IF: Performs conditional processing in batch programs.
-# MOVE: Moves one or more files from one directory to another directory.
-# POPD: Restores the previous value of the current directory saved by 
-# PUSHD.
-# PUSHD: Saves the current directory then changes it.
-# RMDIR: Removes a directory.
-# SET: Displays, sets, or removes Windows environment variables.
-# TASKKILL: Kill or stop a running process or application.
-# VOL: Displays a disk volume label and serial number.
-# XCOPY: Copies files and directory trees.
+rem  2. CRITICAL COMPONENTS THAT RUN THE SCRIPT:
+rem  ATTRIB: Displays or changes file attributes.
+rem  DEL: Deletes one or more files.
+rem  DIR: Displays a list of files and subdirectories in a directory.
+rem  GOTO: Directs the Windows command interpreter to a labeled line in a 
+rem  batch program.
+rem  IF: Performs conditional processing in batch programs.
+rem  MOVE: Moves one or more files from one directory to another directory.
+rem  POPD: Restores the previous value of the current directory saved by 
+rem  PUSHD.
+rem  PUSHD: Saves the current directory then changes it.
+rem  RMDIR: Removes a directory.
+rem  SET: Displays, sets, or removes Windows environment variables.
+rem  TASKKILL: Kill or stop a running process or application.
+rem  VOL: Displays a disk volume label and serial number.
+rem  XCOPY: Copies files and directory trees.
 cls
 
-# You can add custom options for your script
-# Pre-intro of the script
+rem  You can add custom options for your script
+rem  Pre-intro of the script
 
 :preboot
 echo off
@@ -48,7 +48,7 @@ cd %cd%
 pushd %cd%
 goto boot
 
-# This is your startup screen
+rem  This is your startup screen
 :boot
 cls
 Title %owner% %progtitle% %progver% - STARTING SCRIPT
@@ -91,7 +91,7 @@ echo PRESS ANYTHING TO CONTINUE!!!!
 pause
 goto license
 
-# loads GPL 2.0
+rem  loads GPL 2.0
 :license
 cls
 Title %owner% %progtitle% %progver% - GNU GPL 2.0
@@ -337,7 +337,7 @@ pause
 cls
 goto osdetection
 
-# Detects what OS you have
+rem  Detects what OS you have
 :osdetection
 cls
 for /f %%i in ('ver^|find "5.1."') do set OS=Windows XP&& set osrecognized=1
@@ -350,7 +350,7 @@ for /f %%i in ('ver^|find "10."')  do set OS=Windows 10&& set osrecognized=2
 if "%osrecognized%"=="2" (goto chkupdatewin10) ^
 else (goto chkupdate8x7vistaxp)
 
-# Updater for windows 10
+rem  Updater for windows 10
 :chkupdatewin10
 cls
 Title %owner% %progtitle% %progver% - Checking updates (Windows 10 mode)
@@ -372,7 +372,7 @@ echo Press any key to start Hugot Plus...
 pause
 goto warn
 
-# Updater for Windows 8.x and lower
+rem  Updater for Windows 8.x and lower
 :chkupdate8x7vistaxp
 cls
 Title %owner% %progtitle% %progver% - Checking updates (LEGACY mode)
@@ -394,7 +394,7 @@ echo Press any key to start Hugot Plus...
 pause
 goto warn
 
-# If that your update directory dosn't exist
+rem  If that your update directory dosn't exist
 :notexist
 cls
 Title %owner% %progtitle% %progver% - UNAVAILABLE!
@@ -405,7 +405,7 @@ echo Press any key to Hugot Plus...
 pause
 goto warn
 
-# Warning about bugs!
+rem  Warning about bugs!
 :warn
 Title %owner% %progtitle% %progver% - Warning
 cls
@@ -427,7 +427,7 @@ pause
 Title %owner% %progtitle% %progver% - Checking Volume
 goto chvol
 
-# Checks volume's label and serial number
+rem  Checks volume's label and serial number
 :chvol
 cls
 echo Checking External Device......
@@ -441,7 +441,7 @@ pause
 Title %owner% %progtitle% %progver% - Welcome
 goto hi
 
-# This where the magic happens (working end)
+rem  This where the magic happens (working end)
 :hi
 cls
 echo  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -466,7 +466,7 @@ pause
 Title %owner% %progtitle% %progver% - Removing ALL VIRUSES/WORMS!
 goto rmcrap
 
-# This will be your custom filter for malicious files
+rem  This will be your custom filter for malicious files
 :rmcrap
 cls
 echo Clensing process will take few seconds..........
@@ -487,7 +487,7 @@ rd Skypee
 del *lnk
 goto autorun
 
-#Types the contents of autorun.inf
+rem Types the contents of autorun.inf
 :autorun
 title %owner% %progtitle% %progver% - Verify autorun.inf
 cls
@@ -499,12 +499,12 @@ echo Action completed successfully!
 pause
 goto ifdrive
 
-# Checks if there is the "Drive" directory
+rem  Checks if there is the "Drive" directory
 :ifdrive
 if exist "%cd%\Drive" (goto cpdrive) ^
 else (goto verify)
 
-# Copies files automatically
+rem  Copies files automatically
 :cpdrive
 title %owner% %progtitle% %progver% - Moving files to %cd%
 echo Moving files to ROOT DIR
@@ -515,7 +515,7 @@ echo All folders and files successfully moved to root directory!
 pause
 goto killall
 
-# This will KILL programs of your choice
+rem  This will KILL programs of your choice
 :killall
 title %owner% %progtitle% %progver% - Killing RIDICULOUS malware
 cls
@@ -526,7 +526,7 @@ TASKKILL /F /IM wscript.exe /T
 TASKKILL /F /IM cscript.exe /T
 goto verify
 
-# Check if one of your files are malicious or not
+rem  Check if one of your files are malicious or not
 :verify
 title %owner% %progtitle% %progver% - Verify us files!
 cls
@@ -545,7 +545,7 @@ dir /w *cmd
 pause
 goto unhide
 
-# This will unhide your files
+rem  This will unhide your files
 :unhide
 Title %owner% %progtitle% %progver% - Unhiding files
 cls
@@ -562,7 +562,7 @@ attrib /s /d -s -h -r *.*
 Title %owner% %progtitle% %progver% - Unhide Complete!
 goto done
 
-# Actions are complete
+rem  Actions are complete
 :done
 cls
 echo  %owner% %progtitle% %progver% Virus Remover finishes its Job.........
@@ -591,11 +591,11 @@ echo  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 pause
 goto hugots1
 
-# NOTE: You can add custom Hugot lines, Quotes or Memes of your choice
+rem  NOTE: You can add custom Hugot lines, Quotes or Memes of your choice
 popd
 echo Hello World!
 
-# Future plans for the script!
+rem  Future plans for the script!
 :devs
 Title %owner% %progtitle% %progver% - Updates coming soon!!!
 cls
