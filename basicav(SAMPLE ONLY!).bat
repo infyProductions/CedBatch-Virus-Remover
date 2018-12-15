@@ -40,13 +40,30 @@ echo off
 cls
 set owner=%computername%\%username%
 set group=%username%
+set invalidDir=%windir%
 set deftitle=Command Prompt
 set progtitle=HugotAV
-set progver=1.1.5 (Git 1.15)
+set progver=1.5 (Git 2.0)
 color f0
 cd %cd%
 pushd %cd%
-goto boot
+goto chkdir
+
+:chkdir
+Title CedPRO %progtitle% %progver% - Checking runtime directory
+echo Checking your directory to make sure you arn't running this in the C:\Users directory
+echo This will prevent you from deleting icons by accident
+for /f %%i in ('dir %cd%^|find "C:\"') do set sosstop=stopme&& set vardir=home
+for /f %%i in ('dir %cd%^|find "C:\Users\%username%"') do set sosstop=stopme&& set vardir=home
+for /f %%i in ('dir %cd%^|find "C:\Windows"') do set sosstop=stopme&& set vardir=home
+if "%vardir%"=="home" (goto stopnow) ^
+else (goto boot)
+
+rem prequitting
+:prequit
+echo System/Desktop directory found!
+echo quitting now
+goto devs
 
 rem  This is your startup screen
 :boot
