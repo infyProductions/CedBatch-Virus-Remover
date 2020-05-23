@@ -1,5 +1,20 @@
 echo off
 title %deftitle%
+net session >NUL 2>&1
+
+if %errorlevel% neq 0 (
+
+    echo WARNING: Some of the programs requires administrator rights 
+	echo This batch program will still continue and run as regular user
+	
+	    pause
+		set adminrights=noadmin
+		goto preboot
+		)
+echo INFO: Administrator user detected!
+echo This batch program will run in administrator mode
+set adminrights=admin
+pause
 echo off
 cls
 goto preboot
@@ -40,7 +55,7 @@ echo off
 cls
 set deftitle=Command Prompt
 set progtitle=HugotAV ULTRA Edition
-set progver=4.6 (Git 3.3)
+set progver=5.1 (Git 4.1)
 color f0
 cd %cd%
 pushd %cd%
@@ -92,236 +107,42 @@ goto license
 rem loads GPL 2.0
 :license
 cls
-Title CedPRO %progtitle% %progver% - GNU GPL 2.0
+Title CedPRO %progtitle% %progver% - License Agreement
 echo Use the SCROLL bar to read license
 echo. 
-echo                    GNU GENERAL PUBLIC LICENSE
-echo   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+echo  Please note!
+echo DUE TO THIS BATCH PROGRAM IS LITERALLY FREE OF CHARGE, THERE IS NO WARRANTY
+ECHO FOR THE PROGRAM, TO THE EXTENT PERMITTED BY LAW.
+ECHO CEDMIX PRODUCTIONS WILL HAVE NO ADDITONAL CORRECTION NEEDED IN CASE YOU NEED
+ECHO TO CUSTOMIZE IT FOR YOUR OWN PERSONAL USE.
 echo.
-echo  0. This License applies to any program or other work which contains
-echo a notice placed by the copyright holder saying it may be distributed
-echo under the terms of this General Public License.  The "Program", below,
-echo refers to any such program or work, and a "work based on the Program"
-echo means either the Program or any derivative work under copyright law:
-echo that is to say, a work containing the Program or a portion of it,
-echo either verbatim or with modifications and/or translated into another
-echo language.  (Hereinafter, translation is included without limitation in
-echo the term "modification".)  Each licensee is addressed as "you".
 echo.
-echo Activities other than copying, distribution and modification are not
-echo covered by this License; they are outside its scope.  The act of
-echo running the Program is not restricted, and the output from the Program
-echo is covered only if its contents constitute a work based on the
-echo Program (independent of having been made by running the Program).
-echo Whether that is true depends on what the Program does.
-echo.
-echo  1. You may copy and distribute verbatim copies of the Program's
-echo source code as you receive it, in any medium, provided that you
-echo conspicuously and appropriately publish on each copy an appropriate
-echo copyright notice and disclaimer of warranty; keep intact all the
-echo notices that refer to this License and to the absence of any warranty;
-echo and give any other recipients of the Program a copy of this License
-echo along with the Program.
-echo.
-echo You may charge a fee for the physical act of transferring a copy, and
-echo you may at your option offer warranty protection in exchange for a fee.
-echo.
-echo  2. You may modify your copy or copies of the Program or any portion
-echo of it, thus forming a work based on the Program, and copy and
-echo distribute such modifications or work under the terms of Section 1
-echo above, provided that you also meet all of these conditions:
-echo.
-echo    a) You must cause the modified files to carry prominent notices
-echo    stating that you changed the files and the date of any change.
-echo.
-echo    b) You must cause any work that you distribute or publish, that in
-echo    whole or in part contains or is derived from the Program or any
-echo    part thereof, to be licensed as a whole at no charge to all third
-echo    parties under the terms of this License.
-echo.
-echo    c) If the modified program normally reads commands interactively
-echo    when run, you must cause it, when started running for such
-echo    interactive use in the most ordinary way, to print or display an
-echo    announcement including an appropriate copyright notice and a
-echo    notice that there is no warranty (or else, saying that you provide
-echo    a warranty) and that users may redistribute the program under
-echo    these conditions, and telling the user how to view a copy of this
-echo    License.  (Exception: if the Program itself is interactive but
-echo    does not normally print such an announcement, your work based on
-echo    the Program is not required to print an announcement.)
-echo.
-echo These requirements apply to the modified work as a whole.  If
-echo identifiable sections of that work are not derived from the Program,
-echo and can be reasonably considered independent and separate works in
-echo themselves, then this License, and its terms, do not apply to those
-echo sections when you distribute them as separate works.  But when you
-echo distribute the same sections as part of a whole which is a work based
-echo on the Program, the distribution of the whole must be on the terms of
-echo this License, whose permissions for other licensees extend to the
-echo entire whole, and thus to each and every part regardless of who wrote it.
-echo.
-echo Thus, it is not the intent of this section to claim rights or contest
-echo your rights to work written entirely by you; rather, the intent is to
-echo exercise the right to control the distribution of derivative or
-echo collective works based on the Program.
-echo.
-echo In addition, mere aggregation of another work not based on the Program
-echo with the Program (or with a work based on the Program) on a volume of
-echo a storage or distribution medium does not bring the other work under
-echo the scope of this License.
-echo.
-echo  3. You may copy and distribute the Program (or a work based on it,
-echo under Section 2) in object code or executable form under the terms of
-echo Sections 1 and 2 above provided that you also do one of the following:
-echo.
-echo    a) Accompany it with the complete corresponding machine-readable
-echo    source code, which must be distributed under the terms of Sections
-echo    1 and 2 above on a medium customarily used for software interchange; or,
-echo.
-echo    b) Accompany it with a written offer, valid for at least three
-echo    years, to give any third party, for a charge no more than your
-echo    cost of physically performing source distribution, a complete
-echo    machine-readable copy of the corresponding source code, to be
-echo    distributed under the terms of Sections 1 and 2 above on a medium
-echo    customarily used for software interchange; or,
-echo.
-echo    c) Accompany it with the information you received as to the offer
-echo    to distribute corresponding source code.  (This alternative is
-echo    allowed only for noncommercial distribution and only if you
-echo    received the program in object code or executable form with such
-echo    an offer, in accord with Subsection b above.)
-echo.
-echo The source code for a work means the preferred form of the work for
-echo making modifications to it.  For an executable work, complete source
-echo code means all the source code for all modules it contains, plus any
-echo associated interface definition files, plus the scripts used to
-echo control compilation and installation of the executable.  However, as a
-echo special exception, the source code distributed need not include
-echo anything that is normally distributed (in either source or binary
-echo form) with the major components (compiler, kernel, and so on) of the
-echo operating system on which the executable runs, unless that component
-echo itself accompanies the executable.
-echo.
-echo If distribution of executable or object code is made by offering
-echo access to copy from a designated place, then offering equivalent
-echo access to copy the source code from the same place counts as
-echo distribution of the source code, even though third parties are not
-echo compelled to copy the source along with the object code.
-echo.
-echo   4. You may not copy, modify, sublicense, or distribute the Program
-echo except as expressly provided under this License.  Any attempt
-echo otherwise to copy, modify, sublicense or distribute the Program is
-echo void, and will automatically terminate your rights under this License.
-echo However, parties who have received copies, or rights, from you under
-echo this License will not have their licenses terminated so long as such
-echo parties remain in full compliance.
-echo.
-echo   5. You are not required to accept this License, since you have not
-echo signed it.  However, nothing else grants you permission to modify or
-echo distribute the Program or its derivative works.  These actions are
-echo prohibited by law if you do not accept this License.  Therefore, by
-echo modifying or distributing the Program (or any work based on the
-echo Program), you indicate your acceptance of this License to do so, and
-echo all its terms and conditions for copying, distributing or modifying
-echo the Program or works based on it.
-echo.
-echo   6. Each time you redistribute the Program (or any work based on the
-echo Program), the recipient automatically receives a license from the
-echo original licensor to copy, distribute or modify the Program subject to
-echo these terms and conditions.  You may not impose any further
-echo restrictions on the recipients' exercise of the rights granted herein.
-echo You are not responsible for enforcing compliance by third parties to
-echo this License.
-echo.
-echo   7. If, as a consequence of a court judgment or allegation of patent
-echo infringement or for any other reason (not limited to patent issues),
-echo conditions are imposed on you (whether by court order, agreement or
-echo otherwise) that contradict the conditions of this License, they do not
-echo excuse you from the conditions of this License.  If you cannot
-echo distribute so as to satisfy simultaneously your obligations under this
-echo License and any other pertinent obligations, then as a consequence you
-echo may not distribute the Program at all.  For example, if a patent
-echo license would not permit royalty-free redistribution of the Program by
-echo all those who receive copies directly or indirectly through you, then
-echo the only way you could satisfy both it and this License would be to
-echo refrain entirely from distribution of the Program.
-echo.
-echo If any portion of this section is held invalid or unenforceable under
-echo any particular circumstance, the balance of the section is intended to
-echo apply and the section as a whole is intended to apply in other
-echo circumstances.
-echo.
-echo It is not the purpose of this section to induce you to infringe any
-echo patents or other property right claims or to contest validity of any
-echo such claims; this section has the sole purpose of protecting the
-echo integrity of the free software distribution system, which is
-echo implemented by public license practices.  Many people have made
-echo generous contributions to the wide range of software distributed
-echo through that system in reliance on consistent application of that
-echo system; it is up to the author/donor to decide if he or she is willing
-echo to distribute software through any other system and a licensee cannot
-echo impose that choice.
-echo.
-echo This section is intended to make thoroughly clear what is believed to
-echo be a consequence of the rest of this License.
-echo.
-echo   8. If the distribution and/or use of the Program is restricted in
-echo certain countries either by patents or by copyrighted interfaces, the
-echo original copyright holder who places the Program under this License
-echo may add an explicit geographical distribution limitation excluding
-echo those countries, so that distribution is permitted only in or among
-echo countries not thus excluded.  In such case, this License incorporates
-echo the limitation as if written in the body of this License.
-echo.
-echo  9. The Free Software Foundation may publish revised and/or new versions
-echo of the General Public License from time to time.  Such new versions will
-echo be similar in spirit to the present version, but may differ in detail to
-echo address new problems or concerns.
-echo.
-echo Each version is given a distinguishing version number.  If the Program
-echo specifies a version number of this License which applies to it and "any
-echo later version", you have the option of following the terms and conditions
-echo either of that version or of any later version published by the Free
-echo Software Foundation.  If the Program does not specify a version number of
-echo this License, you may choose any version ever published by the Free Software
-echo Foundation.
-echo.
-echo  10. If you wish to incorporate parts of the Program into other free
-echo programs whose distribution conditions are different, write to the author
-echo to ask for permission.  For software which is copyrighted by the Free
-echo Software Foundation, write to the Free Software Foundation; we sometimes
-echo make exceptions for this.  Our decision will be guided by the two goals
-echo of preserving the free status of all derivatives of our free software and
-echo of promoting the sharing and reuse of software generally.
-echo.
-echo                            NO WARRANTY
-echo.
-echo  11. BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
-echo FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.  EXCEPT WHEN
-echo OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
-echo PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED
-echo OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-echo MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE RISK AS
-echo TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU.  SHOULD THE
-echo PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING,
-echo REPAIR OR CORRECTION.
-echo.
-echo   12. IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
-echo WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
-echo REDISTRIBUTE THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES,
-echo INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING
-echo OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED
-echo TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY
-echo YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER
-echo PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE
-echo POSSIBILITY OF SUCH DAMAGES.
-echo.
-echo                     END OF TERMS AND CONDITIONS.
 choice /c YN /m "Do you agree to the license?"
-if errorlevel 1 goto osdetection
+if errorlevel 1 goto chkdir
 if errorlevel 2 goto devs
 cls
-goto osdetection
+
+rem Checks if you're running on the C:\Users and C:\Windows\System32 directory
+:chkdir
+Title CedPRO %progtitle% %progver% - Checking runtime directory
+echo Checking your directory to make sure you arn't running this in the C:\Users directory
+echo This will prevent you from deleting icons by accident
+for /f %%i in ('dir %cd%^|find "%systemdrive%"') do set sosstop=stopme&& set vardir=home
+for /f %%i in ('dir %cd%^|find "%systemdrive%\Users\%username%"') do set sosstop=stopme&& set vardir=home
+for /f %%i in ('dir %cd%^|find "%systemdrive%\Windows"') do set sosstop=stopme&& set vardir=home
+if "%vardir%"=="home" (goto stopnow) ^
+else (goto osdetection)
+
+
+rem PLEASE STOP RIGHT HERE!
+:stopnow
+cls
+Title CedPRO %progtitle% %progver% - Warning: CRITICAL DIRECTORY DETECTED!
+echo It is NOT advisable to run this in %cd% because your DESKTOP icons/Windows files will be modified/deleted by accident
+echo Exiting batch program....
+pause
+goto devs
+
 
 rem Detects what OS you have
 :osdetection
@@ -354,9 +175,9 @@ Title CedPRO %progtitle% %progver% - Update Complete (Windows 8.x/10 mode)
 echo Update complete!
 echo You need to restart to apply changes...
 echo Close this window and open it again
-echo If no errors, Press any key to start Hugot Plus...
+echo If no errors, Press any key to start HugotAV...
 pause
-goto chkdir
+goto fakestart_0
 
 rem Updater for Windows 7 and lower
 :chkupdatelegacy
@@ -376,9 +197,9 @@ Title CedPRO %progtitle% %progver% - Update Complete (LEGACY mode)
 echo Update complete!
 echo You need to restart to apply changes...
 echo Close this window and open it again
-echo If no errors, Press any key to start Hugot Plus...
+echo If no errors, Press any key to start HugotAV...
 pause
-goto chkdir
+goto fakestart_0
 
 rem If that your update directory dosn't exist
 :notexist
@@ -389,28 +210,7 @@ echo Please try again later...
 echo Anyways, you can still use it!
 echo Press any key to Hugot Plus...
 pause
-goto chkdir
-
-rem Checks if you're running on the C:\Users and C:\Windows\System32 directory
-:chkdir
-Title CedPRO %progtitle% %progver% - Checking runtime directory
-echo Checking your directory to make sure you arn't running this in the C:\Users directory
-echo This will prevent you from deleting icons by accident
-for /f %%i in ('dir %cd%^|find "C:\Users\%username%"') do set sosstop=stopme&& set vardir=home
-for /f %%i in ('dir %cd%^|find "C:\Windows"') do set sosstop=stopme&& set vardir=home
-if "%vardir%"=="home" (goto stopnow) ^
-else (goto start_code)
-
-
-rem PLEASE STOP RIGHT HERE!
-:stopnow
-cls
-Title CedPRO %progtitle% %progver% - Warning: CRITICAL DIRECTORY DETECTED!
-echo It is NOT advisable to run this in %cd% because your DESKTOP icons/Windows files will be modified/deleted by accident
-echo Exiting batch program....
-pause
-goto devs
-
+goto fakestart_0
 
 rem This two line code will have the loop started
 :fakestart_0
@@ -419,7 +219,7 @@ goto start_code
 
 rem Start of the code
 :start_code
-Title CedPRO %progtitle% %progver% - Warning
+Title CedPRO %progtitle% %progver% - Notice
 cls
 echo NOTICE:
 echo This virus remover has bugs... Please proceed with caution.
@@ -432,7 +232,7 @@ echo 1. Had the option to choose to Check and Repair the external drive (USER OP
 echo.
 echo 2. Scan drive for Viruses (e.g. Shortcuts and autoplay issues)
 echo.
-echo 3. Defrag (administrator rights required!)
+echo 3. Defrag (administrator rights required!) [now autodetects whether the user runs on higher permissions]
 echo.
 echo 4. Exit this batch program
 echo.
@@ -453,10 +253,21 @@ echo.
 echo It includes trim, proper disk optimization and more!
 pause
 cls
-Title CedPRO %progtitle% %progver% - Select option!
+goto veradmin
+
+rem checks admin rights
+:veradmin
+cls
+if "%adminrights%"=="admin" (goto option_admin) ^
+else (goto option_noadmin)
+
+rem admin mode
+:option_admin
+cls
+Title CedPRO %progtitle% %progver% - Select option! (admin)
 echo Now choose what you want to do. 
 echo 1) Repair EXTERNAL DRIVE (Chkdisk)
-echo 2) Start Scan and Exploit EXTERMINATION
+echo 2) Start Scan and remove shortcuts (if ran, it may cause system instability)
 echo 3) Defrag external device (administrator rights required)
 echo 4) Exit this batch program
 set input=
@@ -468,13 +279,31 @@ if %input%==4 goto Devs if NOT goto fakestart_0
 Title CedPRO %progtitle% %progver% - Checking Volume
 goto chvol
 
+
+:option_noadmin
+cls
+Title CedPRO %progtitle% %progver% - Select option! (non-admin)
+echo Now choose what you want to do. 
+echo NOTE: NO DEFRAG COMMAND
+echo 1) Repair EXTERNAL DRIVE (Chkdisk)
+echo 2) Start Scan remove shortcuts (if ran, it may cause system instability)
+echo 3) Exit this batch program
+set input=
+set /p input= Choice: 
+if %input%==1 goto checkdisk if NOT goto fakestart_0
+if %input%==2 goto chvol if NOT goto fakestart_0
+if %input%==3 goto Devs if NOT goto fakestart_0
+Title CedPRO %progtitle% %progver% - Checking Volume
+goto chvol
+
 rem Defrag command
 :defrag
-if "%osrecognized%"=="2" (goto defrag1) ^
+for /f %%i in ('ver^|find "10."')  do set OS=Windows 10&& set osrecognized=3
+if "%osrecognized%"=="3" (goto defrag1) ^
 else (goto defrag2)
-rem Defrag for Windows 8.x/10
+rem Defrag for Windows 10
 :defrag1
-Title CedPRO %progtitle% %progver% - Select method defrag (Windows 8.x/10 mode)
+Title CedPRO %progtitle% %progver% - Select method defrag (Windows 10 mode)
 echo Select defragging method!
 echo 1) Hard Disk MODE
 echo 2) SDD MODE
@@ -489,7 +318,7 @@ echo Defragging HDD...
 defrag %cd% /u /v
 echo DISK checking complete
 pause
-goto start_code
+goto veradmin
 rem SDD defrag
 :SDD
 cls
@@ -508,7 +337,7 @@ Title CedPRO %progtitle% %progver% - Defragger (SDD mode) (Trim mode)
 defrag %cd% /l
 echo DISK checking complete
 pause
-goto start_code
+goto veradmin
 :ofrag
 rem optimized defrag for usb drives
 cls
@@ -516,7 +345,7 @@ Title CedPRO %progtitle% %progver% - Defragger (SDD mode) (Optimized USB mode)
 defrag %cd% /u /v /o
 echo DISK checking complete
 pause
-goto start_code
+goto veradmin
 rem Defrag for Windows 7 and lower
 :defrag2
 cls
@@ -525,7 +354,7 @@ echo defragging...
 defrag %cd% /u /v
 echo DISK checking complete
 pause
-goto start_code
+goto veradmin
 
 rem Loads the Check Disk Command
 :checkdisk
@@ -534,7 +363,7 @@ echo Checking EXTERNAL DEVICE...
 chkdsk
 echo DISK checking complete
 pause
-goto start_code
+goto veradmin
 
 
 rem Checks volume's label and serial number
@@ -555,13 +384,6 @@ goto hi
 rem This where the magic happens (working end)
 :hi
 cls
-echo  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-echo  ++                              P R O M O T I O N  !                        ++
-echo  ++                                                                          ++
-echo  ++                 ***         NAGKATULUYAN NA KAYO!          ***           ++
-echo  ++                                 (Joke lang)                          ++
-echo  ++                                  (hahahaha)                              ++
-echo  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 echo.
 echo.
 echo  Recommend for use in any PORTABLE STORAGE DEVICES (e.g USB DEVICES)
@@ -572,7 +394,7 @@ echo.
 echo.
 echo.
 pause
-Title CedPRO %progtitle% %progver% - Removing ALL PAASANG VIRUSES/WORMS!
+Title CedPRO %progtitle% %progver% - Initializing cleanup
 goto rmcrap
 
 
@@ -669,6 +491,7 @@ echo  This process will take few minutes..........
 echo.
 echo  Please wait.........
 attrib /s /d -s -h -r *.*
+attrib +h "$RECYCLE.BIN"
 Title CedPRO %progtitle% %progver% - Unhide Complete!
 goto done
 
@@ -692,11 +515,11 @@ echo.
 echo  Cleaning Process Complete.
 echo.
 echo  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-echo  ++                                                                          ++
-echo  ++                                                                          ++
-echo  ++                    *** USB DEVICE is Ready to Go! ***                    ++
-echo  ++                            (YES Walang FOREVER!)                            ++
-echo  ++                             (Char LANG!)                                ++
+echo  ++                                 TASK COMPLETE                                    ++
+echo  ++                                                                                  ++
+echo  ++                    *** Storage Media is Ready to Go! ***                        ++
+echo  ++            (Thank goodness you never deleted System32 and SysWow64)              ++
+echo  ++      (Because if you're such a moron, you will never ever believe forever!)      ++
 echo  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 pause
 goto devs
